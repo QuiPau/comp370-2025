@@ -27,3 +27,24 @@ Giving me:
    2691 Pinkie Pie
    2848 Rainbow Dash
    2433 Rarity
+
+Then to count the number of total lines I simply executed the following command:
+wc -l clean_dialog.csv
+
+Finally I had to generate the Line_percentage.csv, to do I created a short python script with the previous grep output.
+
+csv_generator.py:
+
+
+import pandas as pd
+
+total_lines = 36860
+
+data = {
+    'pony_name' : ['Twilight Sparkle', 'Rarity', 'Pinkie Pie', 'Rainbow Dash', 'Fluttershy'],
+    'total_line_count' : ['2045', '2691', '2848', '2433', '4381'],
+    'percent_all_lines' : [f'{round((2045/total_lines)*100, 4)}%', f'{round((2691/total_lines)*100,4)}%', f'{round((2848/total_lines)*100, 4)}%', f'{round((2433/total_lines)*100,4)}%', f'{round((4381/total_lines)*100,4)}%']
+}
+
+df = pd.DataFrame(data)
+df.to_csv('Line_percentages.csv', index=False)

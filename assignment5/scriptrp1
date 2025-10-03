@@ -1,6 +1,0 @@
-import requests
-
-url = "https://data.cityofnewyork.us/resource/9hyh-zkx9.json"
-response = requests.get(url)
-
-print(response.text)
